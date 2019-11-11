@@ -17,5 +17,11 @@ Route::get('/', function () {
 
 Route::get('/demo_url', 'DemoController@test');   // (url, controller_name@method_name)
 Route::get('/', 'TargetController@index');
+
 Route::get('/create', 'TargetController@create');
-Route::get('/edit', 'TargetController@edit');
+Route::post('/create/store', 'TargetController@store');
+
+Route::get('/edit/{target}', 'TargetController@edit');
+Route::put('/edit/{target}', 'TargetController@update');
+
+Route::get('/delete/{target}', 'TargetController@delete');

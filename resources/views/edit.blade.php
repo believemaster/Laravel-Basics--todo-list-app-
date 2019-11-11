@@ -6,7 +6,16 @@
 
   <div class="container">
 
-    <form action="/submit_edit">
+    <form action="/edit/{{$target->id}}" method="post">
+      {{ method_field("PUT") }}
+      {{ csrf_field() }}
+      @if(count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+          @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+        </div>
+      @endif
 
       <button type="submit" class="btn btn-primary right action_submit">update</button>
 
@@ -14,11 +23,11 @@
 
       <div class="form-group">
         <label for="usr">Target:</label>
-        <input type="text" class="form-control" id="usr" name="target">
+        <input type="text" class="form-control" id="usr" name="target" value="{{$target->target}}">
       </div>
       <div class="form-group">
         <label for="pwd">Ranking:</label>
-        <input type="number" class="form-control" id="pwd" name="ranking">
+        <input type="number" class="form-control" id="pwd" name="ranking" value="{{$target->ranking}}">
       </div>
 
     </form>
@@ -32,65 +41,22 @@
         <th>Action</th>
       </tr>
     </thead>
+
     <tbody>
+      @foreach($targets as $target)
       <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
+        <td>{{ $target->target }}</td>
+        <td>{{ $target->ranking }}</td>
         <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
+            <a href="/edit/{{$target->id}}"><button type="button" class="btn btn-info">Edit</button></a>
+            <a href="/delete"><button type="button" class="btn btn-danger">Delete</button></a>
         </td>
       </tr>
-      <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
-        <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
-      <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
-        <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
-      <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
-        <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
-      <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
-        <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
-      <tr>
-        <td>To do list....To do list....To do list....To do list....To do list....To do list....</td>
-        <td>01</td>
-        <td class="action_td">
-            <a href="#"><button type="button" class="btn btn-info">Edit</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
+  {{$targets->links()}} <!--For Pagination-->
 
 </div>
 
