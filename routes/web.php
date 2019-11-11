@@ -19,7 +19,7 @@ Route::get('/demo_url', 'DemoController@test');   // (url, controller_name@metho
 Route::get('/', 'TargetController@index');
 
 Route::get('/create', 'TargetController@create');
-Route::post('/create/store', 'TargetController@store');
+Route::post('/create', 'TargetController@store');
 
 Route::get('/edit/{target}', 'TargetController@edit');
 Route::put('/edit/{target}', 'TargetController@update');

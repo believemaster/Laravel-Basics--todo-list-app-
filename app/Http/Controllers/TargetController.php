@@ -75,8 +75,9 @@ class TargetController extends Controller
 			return redirect('/'); // or return back(); for going to previous page
 		}
 
-		public function delete()
+		public function delete(Target $target)
 		{
-			
+			$target->delete();
+			return back();
 		}
 }
