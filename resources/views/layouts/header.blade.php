@@ -23,7 +23,7 @@
         <a class="nav-link" href="{{url('create')}}">Create</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('edit')}}">Edit</a>
+        <a class="nav-link" href="https://believemaster.github.io">BM</a>
       </li>
     </ul>
   </div>
