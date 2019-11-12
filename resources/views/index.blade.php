@@ -21,8 +21,8 @@
       <td>{{ $target->target }}</td>
       <td>{{ $target->ranking }}</td>
       <td class="action_td">
-          <a href="/edit/{{$target->id}}"><button type="button" class="btn btn-info">Edit</button></a>
-          <a href="/delete/{{$target->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+          <a href="/edit/{{$target->id}}"><button type="button" class="btn btn-info fa fa-edit"> Edit</button></a>
+          <a href="/delete/{{$target->id}}"><button type="button" class="btn btn-danger fa fa-trash"> Delete</button></a>
       </td>
     </tr>
     @endforeach
